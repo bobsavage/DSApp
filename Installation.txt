@@ -1,0 +1,9 @@
+#
+# BASH Shell Commands for setting up DS development environment
+#
+git clone /Users/bobsavage/Dropbox/Web-Dev-Repos/DSApplication
+cd DSApplication/
+/anaconda/envs/flasking/bin/python3.4 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt

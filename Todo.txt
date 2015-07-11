@@ -1,3 +1,4 @@
+2015-07-11 +test confirm repository is functioning as expected
 (A) 2015-07-05 +milestone user able to update a DS table
 (B) 2015-07-10 +admin Add convenience function for updating a password
 (M) 2015-07-09 +test automate creation of DS_MAG_BAG
