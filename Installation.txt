@@ -7,3 +7,13 @@ cd DSApplication/
 source venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
+
+#
+# Setting up the test environment
+#
+## Assuming venv is active
+python DSApp.py shell
+# inside of shell
+test_setup()
+# use ctrl-D to exit shell
+# back at Bash prompt
