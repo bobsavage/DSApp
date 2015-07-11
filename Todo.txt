@@ -1,0 +1,17 @@
+(A) 2015-07-05 +milestone user able to update a DS table
+(B) 2015-07-10 +admin Add convenience function for updating a password
+(M) 2015-07-09 +test automate creation of DS_MAG_BAG
+(Z) 2015-07-05 +admin Could add auto-generated email (with password) to DSuser when registering or updating password
+x 2015-07-05 +core create links for DS pages on index
+x 2015-07-05 +core create page for some entity
+x 2015-07-05 +core display rows of entity (from DB query)
+x 2015-07-05 +landing-page Able to see list of DS user's associated entities
+x 2015-07-05 +milestone 1st working web version (feature incomplete)
+x 2015-07-05 +milestone Able to create a new user and a new entity (confirm in DB)
+x 2015-07-05 +security need a logout feature
+x 2015-07-05 +test support for http error 404
+x 2015-07-05 +test support for http error 500
+x 2015-07-09 +security Deny access if current_user is not listed as editor of entity
+x 2015-07-09 +test support for http errors 403
+x 2015-07-10 +extras Add a last-login timestamp to the User to make it easy to monitor how the app is being used
+x 2015-07-10 +usability Flash user when login failed

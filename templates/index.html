@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Data Steward links for {{ username }}{% endblock %}
+
+{% block page_content %}
+    <h1>Data Steward</h1>
+    <h2>{{ username }}</h2>
+    <table class="table table-hover">
+        <tr>
+            <th>DS Entity</th>
+        </tr>
+    {% for e in entities %} 
+    {% set tbl_rt = e.ds_table_nm %}
+    <tr>
+        <td><a href="{{ url_for(tbl_rt) }}">{{ e.entity_nm }}</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

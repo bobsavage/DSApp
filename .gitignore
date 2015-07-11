@@ -1,0 +1,6 @@
+venv/
+
+*.sqlite
+
+.DS_Store
+

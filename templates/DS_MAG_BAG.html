@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Data Steward - Magic Bag{% endblock %}
+
+{% block page_content %}
+    <h1>Editing Magic Bag <small>Data Steward</small></h1>
+    <p>Some guidance, e.g. "Edit the rows you want then hit submit".</p>
+    <table class="table table-hover"><thead>
+    <th>BAG_ABBREV</th>
+    <th>BAG_NM</th>
+    <th>MAGIC_POWER_DESCR</th>
+    <th>SORT_ORD</th>
+    </thead>
+    <tbody>
+    {% for b in bags %}
+    <tr>
+    <td> {{b.BAG_ABBREV}} </td>
+    <td> {{b.BAG_NM}} </td>
+    <td> {{b.MAGIC_POWER_DESCR}} </td>
+    <td> {{SORT_ORD}} </td>
+    </tr>
+    {% endfor %}
+    <tbody>
+    </table>
+    {% if errmess %}
+    	<div class="text-muted"><p>{{ errmess }}</p></div>
+    {% endif %}
+{% endblock %}
