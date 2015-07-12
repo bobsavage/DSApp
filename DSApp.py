@@ -23,7 +23,7 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, redirect, url_for, request, abort, flash
 from flask.ext.bootstrap import Bootstrap
-from flask.ext.wtf import Form
+from flask.ext.wtf import Form, html5
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import Required, Length
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -57,6 +57,7 @@ class LoginForm(Form):
     password = PasswordField('Password', validators=[Required()])
     remember_me = BooleanField('Remember me')
     submit = SubmitField('Submit')
+  
 
 #
 # 4. Models
@@ -169,7 +170,7 @@ def index():
 ## DS Table Pages
 
 # DS_MAG_BAG
-@app.route('/DS_MAG_BAG')
+@app.route('/DS_MAG_BAG', methods=['GET', 'POST'])
 @login_required
 def DS_MAG_BAG():
     """DS Page for test_setup"""
@@ -178,8 +179,26 @@ def DS_MAG_BAG():
     #
     if e.user_id != int(current_user.get_id()):
         abort(403) # forbidden except to specific users
+
+    # executes when user submits
+    if request.method == 'POST':
+        d = request.form.to_dict()
+        # errmess = str( dir(request.form))
+        # errmess = str( dir(current_user))
+
+        mb = MAG_BAG.query.filter_by(BAG_ABBREV=d.get('BAG_ABBREV')).first()
+        mb.MAGIC_POWER_DESCR = d.get('MAGIC_POWER_DESCR')
+        mb.SORT_ORD = int(d.get('SORT_ORD'))
+        # audit fields
+        mb.LAST_UPDATE_DTTM = datetime.now()
+        mb.LAST_UPDATE_INITIALS = current_user.login_id
+        # finally update DS table
+        db.session.add(mb)
+        db.session.commit()
+    #
     bags = MAG_BAG.query.all()
-    return render_template('DS_MAG_BAG.html', bags=bags, errmess=errmess)
+    #
+    return render_template('DS_MAG_BAG.html', rows=bags, errmess=errmess)
 
 
 # Errors

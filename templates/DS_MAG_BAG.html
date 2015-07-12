@@ -5,24 +5,35 @@
 
 {% block page_content %}
     <h1>Editing Magic Bag <small>Data Steward</small></h1>
-    <p>Some guidance, e.g. "Edit the rows you want then hit submit".</p>
+    <p>Edit the rows you want then hit submit.</p>
+    <p><strong>Important:</strong> only edit <strong>one row at a time</strong></p>
     <table class="table table-hover"><thead>
     <th>BAG_ABBREV</th>
     <th>BAG_NM</th>
     <th>MAGIC_POWER_DESCR</th>
     <th>SORT_ORD</th>
+    <th></th>
     </thead>
     <tbody>
-    {% for b in bags %}
+    {% for r in rows %}
     <tr>
-    <td> {{b.BAG_ABBREV}} </td>
-    <td> {{b.BAG_NM}} </td>
-    <td> {{b.MAGIC_POWER_DESCR}} </td>
-    <td> {{SORT_ORD}} </td>
+        <form action="DS_MAG_BAG" method="post">
+            <td><input type="text" name="BAG_ABBREV" 
+                value="{{r.BAG_ABBREV}}" readonly></td>
+            <td><input type="text" name="BAG_NM" 
+                value="{{r.BAG_NM}}" readonly></td>
+            <td><input type="text" name="MAGIC_POWER_DESCR"
+                value="{{r.MAGIC_POWER_DESCR}}"></td>
+            <td><input type="text" name="SORT_ORD"
+                value="{{r.SORT_ORD}}"></td>
+            <td><input type="submit" value="Submit"></td>
+        </form>
     </tr>
     {% endfor %}
     <tbody>
     </table>
+    <!-- errmess is an error message             -->
+    <!-- used for debug during dev and test only -->
     {% if errmess %}
     	<div class="text-muted"><p>{{ errmess }}</p></div>
     {% endif %}
